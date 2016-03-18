@@ -1,27 +1,43 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="FruitVegSort">
     <head>
         <title>Fruit and Veggies</title>
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="css/style.css">
-
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular.min.js"></script>
         <script src="js/fruit_and_veggies_test.js"></script>
         <script src="js/app.js"></script>
     </head>
     <body>
-        <div class="container">
+        
+        <div ng-controller="FVSCtrl" class="container">
+        <div ng-show="win" ng-class="{'has-success': win}">
+            Congrats! You Won!
+        </div>
             <h1>Fruit and Veggies</h1>
-            <div class="row">
+            <div  class="row">
                 <div class="col-sm-4">
-                    col 1
+                    Fruits
+                    <div ng-repeat="aFruit in allFruit track by $index" ng-class="{'has-fail': !win, 'has-fail': fail}" class="well">
+                        {{ aFruit }}
+                        <button ng-click="toPoolFromFruit($index)" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-arrow-right"></span></button>
+                    </div>
+                </div>
+                <div ng- class="col-sm-4">
+                    Pool
+                    <div ng-repeat="aNom in fruitAndVeg track by $index" ng-class="{'has-fail': !win, 'has-fail': fail}" class="well">
+                        <button ng-click="toFruit($index)" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-arrow-left"></span></button>
+                        {{ aNom }}
+                        <button ng-click="toVegetable($index)" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-arrow-right"></span></button>
+                    </div>
                 </div>
                 <div class="col-sm-4">
-                    col 2
+                    Veggies
+                    <div ng-repeat="aVegetable in allVegetables track by $index" ng-class="{'has-fail': !win, 'has-fail': fail}" class="well">
+                        <button ng-click="toPoolFromVeg($index)" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-arrow-left"></span></button>
+                        {{ aVegetable }}
+                    </div>
                 </div>
-                <div class="col-sm-4">
-                    col 3
-                </div>                        
             </div>
         </div>
     </body>
