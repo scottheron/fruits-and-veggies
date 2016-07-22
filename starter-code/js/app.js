@@ -11,7 +11,6 @@ app.controller("FVSCtrl", ['$scope', function($scope){
     $scope.vegCount = 0;
     $scope.win = false;
     $scope.fail = false;
-    // $scope.aNom = "";
     $scope.allFruit = [];
     $scope.allVegetables = [];
     $scope.fruitAndVeg = fruitVeg;
@@ -77,11 +76,6 @@ app.controller("FVSCtrl", ['$scope', function($scope){
         $scope.win = false;
         $scope.fail = false;
     }
-
-    
-
-        
-    
 
 }]);
 
